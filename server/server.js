@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(helmet({ contentSecurityPolicy: false }));
+app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
 
