@@ -1,1 +1,3 @@
-//Keep file
+module.exports = {
+  Book: require('./Puzzle')
+};

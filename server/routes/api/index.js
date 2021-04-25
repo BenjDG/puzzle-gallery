@@ -1,5 +1,7 @@
 const router = require('express').Router();
+const puzzleRoutes = require('./puzzle');
 
-// router.use('/', user);
+// localhost/api
+router.use('/puzzle', puzzleRoutes);
 
 module.exports = router;
