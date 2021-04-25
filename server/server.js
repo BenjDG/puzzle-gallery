@@ -1,7 +1,10 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const corsOptions = require('./config/cors.js');
+const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
