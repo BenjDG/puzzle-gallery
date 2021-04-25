@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -17,6 +18,7 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
+app.use(routes);
 
 // for Reactjs ##################
 // Serve up static assets (usually on heroku)
@@ -30,6 +32,13 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 }
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/puzzlegallery', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
 
 app.listen(PORT, (err) => {
   if (err) throw err;
