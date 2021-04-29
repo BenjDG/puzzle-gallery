@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const puzzleController = require('../../controllers/puzzleController');
+const puzzleController = require('../../../controllers/puzzleController');
 
 // Matches with '/api/puzzle'
 

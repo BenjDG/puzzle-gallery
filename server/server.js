@@ -1,7 +1,9 @@
 const path = require('path');
 const express = require('express');
+const passport = require('./config/passport');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const session = require('express-session');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const corsOptions = require('./config/cors.js');
@@ -18,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(helmet({ contentSecurityPolicy: false }));
+app.use(session({ secret: 'sassy', resave: false, saveUninitialized: true }));
 app.use(cors(corsOptions));
 
 app.use(morgan('dev'));

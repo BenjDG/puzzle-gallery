@@ -1,7 +1,13 @@
 const router = require('express').Router();
-const puzzleRoutes = require('./puzzle');
+const authRoutes = require('./auth');
+const puzzle = require('./puzzle');
 
-// localhost/api
-router.use('/puzzle', puzzleRoutes);
+const isAuth = require('../../../config/middleware/isAuthenticated');
+
+router.use('/auth', authRoutes);
+
+router.use(isAuth);
+
+router.use('/puzzle', puzzle);
 
 module.exports = router;
