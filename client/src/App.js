@@ -1,12 +1,36 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { UserProvider, UseUserProvider } from './services/userContext';
 import Gallery from './components/gallery';
+import Login from './components/login';
 
 function App () {
+  const { user } = UseUserProvider();
   return (
     <div>
-      <Gallery />
+      <BrowserRouter>
+        <Switch>
+          {user.id && (<>
+            <Route path='/gallery'>
+              <Gallery />
+            </Route>
+          </>
+          )}
+          <Route path='/'>
+            <Login />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+const AppProvider = () => {
+  return (
+    <UserProvider>
+      <App />
+    </UserProvider>
+  )
+}
+
+export default AppProvider;

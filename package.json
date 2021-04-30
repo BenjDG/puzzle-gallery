@@ -1,23 +1,45 @@
 {
   "name": "puzzle-gallery",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "This project is an application to keep track of puzzles that you have completed.",
   "main": "server/server.js",
   "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node ./server/server.js",
+    "start:dev": "concurrently \"nodemon ./server/server.js\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "prune": "concurrently \"cd client && npm prune\" \"cd server && npm prune\"",
+    "start:old": "nodemon ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BenjDG/puzzle-gallery.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "puzzle",
+    "gallery",
+    "photo",
+    "picture"
+  ],
+  "author": "Ben Galloway",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/BenjDG/puzzle-gallery/issues"
   },
   "homepage": "https://github.com/BenjDG/puzzle-gallery#readme",
-  "dependencies": {},
+  "dependencies": {
+    "if-env": "^1.0.4"
+  },
+  "nodemonConfig": {
+    "delay": "2500",
+    "ignore": [
+      "client/*"
+    ]
+  },
   "devDependencies": {
     "concurrently": "^6.0.2",
     "kill-port": "^1.6.1",
