@@ -8,12 +8,13 @@ function App () {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path='/'>
-          <Login />
-          </Route>
           <Route path='/gallery'>
           <Gallery />
           </Route>
+          <Route path='/'>
+          <Login />
+          </Route>
+
         </Switch>
       </BrowserRouter>
     </div>
