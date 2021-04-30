@@ -14,7 +14,6 @@ function App () {
           <Route path='/'>
           <Login />
           </Route>
-
         </Switch>
       </BrowserRouter>
     </div>
