@@ -15,12 +15,22 @@ const { v1: uuidv1 } = require('uuid');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/puzzlegallery', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+mongoose.set("useCreateIndex", true);
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(session({ secret: 'sassy', resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
@@ -39,12 +49,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/puzzlegallery', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
+
 
 app.listen(PORT, (err) => {
   if (err) throw err;
