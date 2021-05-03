@@ -24,9 +24,11 @@ export default function Register () {
     if (login.password === login.confirmPassword) {
       API.register(login.username, login.password)
       .then(() => history.push('/login'))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      });
     } else {
-      setErr('An error occured, please try again.');
+      setErr(err);
     }
   };
 
