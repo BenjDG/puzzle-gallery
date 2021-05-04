@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { UserProvider, UseUserProvider } from './services/userContext';
 import Gallery from './components/gallery';
 import Login from './components/login';
+import Register from "./components/register";
 
 function App () {
   const { user } = UseUserProvider();
@@ -16,6 +17,9 @@ function App () {
             </Route>
           </>
           )}
+          <Route path='/register'>
+            <Register />
+          </Route>
           <Route path='/'>
             <Login />
           </Route>
