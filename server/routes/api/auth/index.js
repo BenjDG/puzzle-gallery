@@ -3,6 +3,7 @@ const passport = require('../../../config/passport');
 const authController = require('../../../controllers/auth');
 
 router.route('/logout').get(authController.logout);
+router.route('/register').post(authController.register);
 
 router.use(passport.authenticate('local', {
   session: true
@@ -10,5 +11,6 @@ router.use(passport.authenticate('local', {
 
 // Matches with '/api/auth'
 router.route('/login').post(authController.login);
+
 
 module.exports = router;
