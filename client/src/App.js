@@ -11,18 +11,11 @@ function App () {
     <div>
       <BrowserRouter>
         <Switch>
-          {user.id && (<>
-            <Route path='/gallery'>
-              <Gallery />
-            </Route>
-          </>
+          {user.id && (
+            <Route path='/gallery' render={() => <Gallery />} />
           )}
-          <Route path='/register'>
-            <Register />
-          </Route>
-          <Route path='/'>
-            <Login />
-          </Route>
+          <Route path='/register' render={() => <Register />} />
+          <Route path='/' render={() => <Login />} />
         </Switch>
       </BrowserRouter>
     </div>
