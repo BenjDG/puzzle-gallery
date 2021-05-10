@@ -3,9 +3,7 @@ import './styles.css';
 import API from '../../services/API';
 
 export default function Gallery () {
-  const [picFile, setPicFile] = useState({
-    selectedFile: ''
-  });
+  const [picFile, setPicFile] = useState([]);
 
   const handleGetClick = async () => {
     API.findAll()
@@ -17,12 +15,12 @@ export default function Gallery () {
 
   const handleUploadClick = async (e) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(picFile);
 
     const formData = new FormData();
 
     formData.append(
-      'pictureFile',
+      'picFile',
       picFile.selectedFile
     )
 
@@ -39,7 +37,7 @@ export default function Gallery () {
   }
 
   const onFileChange = (e) => {
-    console.log(`e.target.files[0]`, e.target.files[0])
+    // console.log(`e.target.files[0]`, e.target.files[0])
     setPicFile({ selectedFile: e.target.files[0]});
   }
 
