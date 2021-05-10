@@ -8,13 +8,18 @@ const register = async function (req, res) {
   }
   catch (err) {
     console.log(`error inside save ${err}`);
-    res.status(500).send(err);
+    res.sendStatus(500);
+  }
+  finally {
+    res.sendStatus(200);
   }
 };
 
 const login = async function (req, res) {
-  //code block under construction
-  console.log(`login!!!!!`);
+  res.json({
+    id: req.user.id,
+    username: req.user.username
+  })
 };
 
 const logout = function (req, res) {
