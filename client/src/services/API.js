@@ -18,6 +18,13 @@ const API = {
   logout: function () {
     return axios.get('api/auth/logout');
   },
+  save: function () {
+    return axios.post('api/puzzle/');
+  },
+  findAll: function () {
+    return axios.get('api/puzzle/');
+  },
+
 }
 
 export default API;

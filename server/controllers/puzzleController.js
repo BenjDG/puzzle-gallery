@@ -3,26 +3,20 @@ const db = require('../models');
 // Defining methods for the puzzleController
 module.exports = {
   findAll: function (req, res) {
-    db.Book
+    db.Puzzle
       .find(req.query)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function (req, res) {
-    db.Book
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  create: function (req, res) {
+  save: function (req, res) {
     console.log(req.body);
-    db.Book
+    db.Puzzle
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function (req, res) {
-    db.Book
+    db.Puzzle
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
