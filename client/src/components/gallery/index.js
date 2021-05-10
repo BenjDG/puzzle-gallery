@@ -27,8 +27,6 @@ export default function Gallery () {
       picFile.selectedFile.name
     )
 
-    console.log(picFile.selectedFile);
-    console.log(picFile.selectedFile.name);
       for (const element of formData) {
         console.log(element);
       }
