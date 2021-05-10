@@ -18,8 +18,8 @@ const API = {
   logout: function () {
     return axios.get('api/auth/logout');
   },
-  save: function (formData) {
-    return axios.post('api/puzzle/', formData);
+  save: function (form) {
+    return axios.post('api/puzzle/', form, { headers: {'content-type': 'multipart/form-data'} }).catch(err=>console.error(err));
   },
   findAll: function () {
     return axios.get('api/puzzle/');

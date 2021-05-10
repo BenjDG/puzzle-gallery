@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles.css';
 import API from '../../services/API';
 
+
 export default function Gallery () {
   const [picFile, setPicFile] = useState([]);
 
@@ -17,19 +18,22 @@ export default function Gallery () {
     e.preventDefault();
     // console.log(picFile);
 
-    const formData = new FormData();
+    // create new formData instance
+    const form = new FormData();
 
-    formData.append(
+    // append single file to formData instance
+    form.append(
       'picFile',
       picFile.selectedFile
     )
 
-    for (const element of formData) {
+    // log items in formData object
+    for (const element of form) {
       console.log(element);
     }
 
-
-    API.save(formData)
+    // send formData obj to axios function
+    API.save(form)
       .then(res => {
         console.log(res)
       })
