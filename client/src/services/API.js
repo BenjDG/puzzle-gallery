@@ -18,8 +18,11 @@ const API = {
   logout: function () {
     return axios.get('api/auth/logout');
   },
-  save: function () {
-    return axios.post('api/puzzle/');
+  save: function (picFile) {
+    const obj = {
+      picFile: picFile
+    };
+    return axios.post('api/puzzle/', obj);
   },
   findAll: function () {
     return axios.get('api/puzzle/');
