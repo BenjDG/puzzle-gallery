@@ -24,9 +24,9 @@ export default function Gallery () {
       picFile.selectedFile
     )
 
-      for (const element of formData) {
-        console.log(element);
-      }
+    for (const element of formData) {
+      console.log(element);
+    }
 
 
     API.save(formData)
@@ -38,7 +38,7 @@ export default function Gallery () {
 
   const onFileChange = (e) => {
     // console.log(`e.target.files[0]`, e.target.files[0])
-    setPicFile({ selectedFile: e.target.files[0]});
+    setPicFile({ selectedFile: e.target.files[0] });
   }
 
   return (
