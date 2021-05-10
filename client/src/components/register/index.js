@@ -20,10 +20,13 @@ export default function Register () {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(login.username);
     if (login.password === login.confirmPassword) {
+      console.log(login.username);
       API.register(login.username, login.password)
-      .then(() => history.push('/login'))
+      .then(() => {
+        console.log('redirect');
+        history.push('/login');
+    })
       .catch((err) => {
         console.error(err);
       });

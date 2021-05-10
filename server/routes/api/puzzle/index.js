@@ -5,10 +5,10 @@ const puzzleController = require('../../../controllers/puzzleController');
 
 router.route('/')
   .get(puzzleController.findAll)
-  .post(puzzleController.create);
+  .post(puzzleController.save);
 
 // Matches with '/api/books/:id'
-router.route('/:id')
-  //.delete(puzzleController.remove);
+router.route('/delete/:id')
+  .delete(puzzleController.remove);
 
 module.exports = router;
