@@ -13,8 +13,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  save: ('/uploads' ,type ,function (req, res) {
-    console.log();
+  save: (type ,function (req, res) {
+    console.log(req);
     console.log(req.file);
     console.log(req.body);
     // db.Puzzle
