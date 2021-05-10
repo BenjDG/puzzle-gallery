@@ -23,8 +23,7 @@ export default function Gallery () {
 
     formData.append(
       'pictureFile',
-      picFile.selectedFile,
-      picFile.selectedFile.name
+      picFile.selectedFile
     )
 
       for (const element of formData) {
@@ -40,6 +39,7 @@ export default function Gallery () {
   }
 
   const onFileChange = (e) => {
+    console.log(`e.target.files[0]`, e.target.files[0])
     setPicFile({ selectedFile: e.target.files[0]});
   }
 

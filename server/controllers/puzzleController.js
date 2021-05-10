@@ -3,7 +3,7 @@ const upload = multer({ dest: './uploads'});
 const db = require('../models');
 const fs = require('fs');
 
-var type = upload.single('picFile');
+const type = upload.single('picFile');
 
 // Defining methods for the puzzleController
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  save: ('/uploads' , type,  function (req, res, next) {
+  save: ('/uploads' ,type ,function (req, res) {
     console.log();
     console.log(req.file);
     console.log(req.body);
