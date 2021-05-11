@@ -19,7 +19,7 @@ const API = {
     return axios.get('api/auth/logout');
   },
   save: function (form) {
-    return axios.post('api/puzzle/', form, { headers: {'content-type': 'multipart/form-data'} }).catch(err=>console.error(err));
+    return axios.post('api/puzzle/', form).catch(err=>console.error(err));
   },
   findAll: function () {
     return axios.get('api/puzzle/');

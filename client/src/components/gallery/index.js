@@ -4,7 +4,7 @@ import API from '../../services/API';
 
 
 export default function Gallery () {
-  const [picFile, setPicFile] = useState([]);
+  const [picFile, setPicFile] = useState();
 
   const handleGetClick = async () => {
     API.findAll()
@@ -19,29 +19,26 @@ export default function Gallery () {
     // console.log(picFile);
 
     // create new formData instance
-    const form = new FormData();
+    const bodyFormData = new FormData();
 
     // append single file to formData instance
-    form.append(
-      'picFile',
-      picFile.selectedFile
-    )
+    bodyFormData.append('picFile', picFile.selectedFile);
 
     // log items in formData object
-    for (const element of form) {
+    for (const element of bodyFormData) {
       console.log(element);
     }
 
     // send formData obj to axios function
-    API.save(form)
+    API.save(bodyFormData)
       .then(res => {
-        console.log(res)
+        //console.log(res)
       })
       .catch(err => console.error(err))
   }
 
   const onFileChange = (e) => {
-    // console.log(`e.target.files[0]`, e.target.files[0])
+    console.log(`e.target.files[0]`, e.target.files[0])
     setPicFile({ selectedFile: e.target.files[0] });
   }
 

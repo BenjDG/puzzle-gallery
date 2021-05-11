@@ -13,14 +13,15 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  save: (type ,function (req, res) {
-    console.log(req);
+  save: (type, function (req, res) {
+    // console.log(req);
     console.log(req.file);
     console.log(req.body);
     // db.Puzzle
     //   .create(req.body)
     //   .then(dbModel => res.json(dbModel))
     //   .catch(err => res.status(422).json(err));
+    res.sendStatus(200);
   }),
   remove: function (req, res) {
     db.Puzzle
