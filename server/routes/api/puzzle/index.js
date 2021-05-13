@@ -29,6 +29,4 @@ router.use(upload.single('picFile'));
 router.route('/')
   .post(puzzleController.save);
 
-
-
 module.exports = router;
