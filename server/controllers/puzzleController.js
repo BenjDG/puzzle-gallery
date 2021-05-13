@@ -1,9 +1,6 @@
-const multer = require('multer');
-const upload = multer({ dest: './uploads'});
 const db = require('../models');
 const fs = require('fs');
 
-const type = upload.single('picFile');
 
 // Defining methods for the puzzleController
 module.exports = {
@@ -13,7 +10,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  save: (type, function (req, res) {
+  save: (function (req, res) {
     // console.log(req);
     console.log(req.file);
     console.log(req.body);

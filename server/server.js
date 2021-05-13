@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
-
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/'});
 const passport = require('./config/passport');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -35,8 +36,13 @@ app.use(passport.session());
 app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
-app.use(routes);
 
+
+
+app.post('/api/puzzle/', upload.single('picFile'),(req,res,next)=>{
+  console.log("req.file22222222", req.file);
+})
+app.use(routes);
 // for Reactjs ##################
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
