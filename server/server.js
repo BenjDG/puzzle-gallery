@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/'});
+// const multer = require('multer');
 const passport = require('./config/passport');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,12 +9,14 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const corsOptions = require('./config/cors.js');
 const routes = require('./routes');
-const { v1: uuidv1 } = require('uuid');
+
 
 // console.log(uuidv1());
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/puzzlegallery', {
   useNewUrlParser: true,
@@ -37,11 +38,10 @@ app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
 
+// app.post('/api/puzzle/', upload.single('picFile'),(req,res,next)=>{
+//   console.log("req.file", req.file);
+// })
 
-
-app.post('/api/puzzle/', upload.single('picFile'),(req,res,next)=>{
-  console.log("req.file22222222", req.file);
-})
 app.use(routes);
 // for Reactjs ##################
 // Serve up static assets (usually on heroku)
