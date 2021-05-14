@@ -7,8 +7,8 @@ const { v1: uuidv1 } = require('uuid');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log(req.user.id);
-    //console.log(`path`, path.join(__dirname, '../../../../tmp', req.user.id))
+    // console.log(req.user.id);
+    // console.log(`path`, path.join(__dirname, '../../../../tmp', req.user.id))
     const dir = path.join(__dirname, '../../../../tmp', req.user.id)
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);

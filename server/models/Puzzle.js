@@ -9,7 +9,8 @@ const puzzleSchema = new Schema({
   destination: { type: String, required: true },
   filename: { type: String, required: true },
   path: { type: String, required: true },
-  size: { type: Number, required: true }
+  size: { type: Number, required: true },
+  userid: { type: String, required: true }
 });
 
 const Puzzle = mongoose.model('Puzzle', puzzleSchema);
