@@ -57,6 +57,7 @@ export default function Gallery () {
       <br />
       <br />
       <img src='https://placekitten.com/640/360' alt='kitten' />
+      
     </div>
   );
 }

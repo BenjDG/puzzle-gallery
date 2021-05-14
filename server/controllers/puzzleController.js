@@ -5,9 +5,19 @@ const fs = require('fs');
 // Defining methods for the puzzleController
 module.exports = {
   findAll: function (req, res) {
+console.clear();
+    console.log(req);
+    console.log(req.user);
+
     db.Puzzle
       .find(req.query)
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        console.log(dbModel);
+        const pathArr = dbModel.map(obj => obj.path)
+
+        console.log(pathArr);
+        res.sendStatus(200);
+      })
       .catch(err => res.status(422).json(err));
   },
   save: (function (req, res) {
@@ -17,8 +27,8 @@ module.exports = {
     db.Puzzle
       .create(req.file)
       .then(dbModel => {
-        console.log(`Success!! ${dbModel}`);
-        console.dir(dbModel);
+        // console.log(`Success!! ${dbModel}`);
+        // console.dir(dbModel);
         res.json(dbModel);
       })
       .catch(err => {

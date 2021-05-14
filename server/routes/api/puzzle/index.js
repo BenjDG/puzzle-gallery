@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const router = require('express').Router();
 const puzzleController = require('../../../controllers/puzzleController');
 const multer = require('multer');
@@ -6,7 +7,13 @@ const { v1: uuidv1 } = require('uuid');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../../../../tmp/my-uploads'))
+    console.log(req.user.id);
+    //console.log(`path`, path.join(__dirname, '../../../../tmp', req.user.id))
+    const dir = path.join(__dirname, '../../../../tmp', req.user.id)
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+    cb(null, path.join(__dirname, '../../../../tmp', req.user.id))
   },
   filename: function (req, file, cb) {
     cb(null, uuidv1())
