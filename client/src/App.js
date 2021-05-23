@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { UserProvider, UseUserProvider } from './services/userContext';
 import Gallery from './components/gallery';
 import Login from './components/login';
-import Register from "./components/register";
+import Register from './components/register';
+import ErrorBoundary from './components/errorBoundary';
 
 function App () {
   const { user } = UseUserProvider();
@@ -24,9 +25,11 @@ function App () {
 
 const AppProvider = () => {
   return (
-    <UserProvider>
-      <App />
-    </UserProvider>
+    <ErrorBoundary>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </ErrorBoundary>
   )
 }
 

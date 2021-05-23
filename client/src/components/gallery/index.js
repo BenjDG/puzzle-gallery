@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import './styles.css';
 import API from '../../services/API';
+import Picture from '../picture';
+import { v1 as uuidv1 } from 'uuid';
 
 
 export default function Gallery () {
   const [picFile, setPicFile] = useState();
+  const [displayPicArr, setDisplayPicArr] = useState([]);
 
   const handleGetClick = async () => {
-    API.findAll()
+    await API.findAll()
       .then(res => {
-        console.log(res)
+        console.log(res.data)
+        setDisplayPicArr(res.data);
       })
       .catch(err => console.error(err))
   }
@@ -57,6 +61,13 @@ export default function Gallery () {
       <br />
       <br />
       <img src='https://placekitten.com/640/360' alt='kitten' />
+      {
+        displayPicArr.map((item) => {
+          return (
+            <Picture key={uuidv1()} path={item} />
+          )
+        })
+      }
       
     </div>
   );

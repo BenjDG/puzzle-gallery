@@ -7,15 +7,15 @@ module.exports = {
   findAll: function (req, res) {
     console.log(req.query);
     console.log(`req.user.id`, req.user.id);
-
+    const queryObj = { userid: req.user.id }
     db.Puzzle
-      .find(req.query)
-      .then(dbModel => {
+      .find(queryObj)
+      .then(result => {
         // console.log(dbModel);
-        const pathArr = dbModel.map(obj => obj.path)
+        const fileArr = result.map(obj => `/${req.user.id}/${obj.filename}`)
 
-        console.log(pathArr);
-        res.sendStatus(200);
+        console.log(fileArr);
+        res.json(fileArr);
       })
       .catch(err => res.status(422).json(err));
   },

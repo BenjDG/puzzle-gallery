@@ -43,6 +43,7 @@ app.use(morgan('dev'));
 // })
 
 app.use(routes);
+app.use(express.static(path.join(__dirname,'../tmp')));
 // for Reactjs ##################
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
